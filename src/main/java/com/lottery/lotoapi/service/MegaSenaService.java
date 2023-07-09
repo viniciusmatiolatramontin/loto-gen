@@ -39,4 +39,8 @@ public class MegaSenaService {
 
         return resultReturned;
     }
+
+    public List<ResultMegaSena> getMegaSenaHistory() {
+        return repo.findAll();
+    }
 }
