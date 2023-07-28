@@ -3,6 +3,7 @@ package com.lottery.lotoapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +21,12 @@ public class MegaSenaController {
     private MegaSenaService service;
 
     @GetMapping("/{qtd}")
-    public ResultMegaSena generateMegaSena(@PathVariable Integer qtd) {
-        return service.generateMegaSena(qtd);
+    public ResultMegaSena generateMegaSena(@PathVariable Integer qtd, Authentication authentication) {
+        return service.generateMegaSena(qtd, authentication.getName());
     }
 
     @GetMapping("/historico")
-    public List<ResultMegaSena> getMegaSenaHistory() {
-        return service.getMegaSenaHistory();
+    public List<ResultMegaSena> getMegaSenaHistory(Authentication authentication) {
+        return service.getMegaSenaHistory(authentication.getName());
     }
 }

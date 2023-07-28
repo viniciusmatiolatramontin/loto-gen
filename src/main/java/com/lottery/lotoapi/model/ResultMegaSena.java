@@ -2,6 +2,7 @@ package com.lottery.lotoapi.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.persistence.Entity;
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(value = {"username"})
 public class ResultMegaSena {
 
     @Id
@@ -32,10 +34,12 @@ public class ResultMegaSena {
     private Integer number13th;
     private Integer number14th;
     private Integer number15th;
+    private String username;
 
-    public ResultMegaSena(List<Integer> results) {
+    public ResultMegaSena(List<Integer> results, String username) {
         setUntil6thNumber(results);
         setUntil15thNumber(results);
+        setUsername(username);
     }
 
     public ResultMegaSena() {
@@ -139,6 +143,14 @@ public class ResultMegaSena {
         if (results.size() > 14) {
             number15th = results.get(14);
         }
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
 }
