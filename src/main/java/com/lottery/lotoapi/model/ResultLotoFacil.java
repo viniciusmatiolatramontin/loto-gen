@@ -2,6 +2,7 @@ package com.lottery.lotoapi.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.persistence.Entity;
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(value = {"username"})
 public class ResultLotoFacil {
 
     @Id
@@ -37,10 +39,12 @@ public class ResultLotoFacil {
     private Integer number18th;
     private Integer number19th;
     private Integer number20th;
+    private String username;
 
-    public ResultLotoFacil(List<Integer> results) {
+    public ResultLotoFacil(List<Integer> results, String username) {
         setUntil15thNumber(results);
         setUntil20thNumber(results);
+        setUsername(username);
     }
 
     public ResultLotoFacil() {
@@ -162,4 +166,13 @@ public class ResultLotoFacil {
             number20th = results.get(19);
         }
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+    
 }
