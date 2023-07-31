@@ -25,8 +25,18 @@ public class MegaSenaController {
         return service.generateMegaSena(qtd, authentication.getName());
     }
 
+    @GetMapping("/recrutador/{qtd}")
+    public ResultMegaSena generateMegaSena(@PathVariable Integer qtd) {
+        return service.generateMegaSena(qtd, "recrutador");
+    }
+
     @GetMapping("/historico")
     public List<ResultMegaSena> getMegaSenaHistory(Authentication authentication) {
         return service.getMegaSenaHistory(authentication.getName());
+    }
+
+    @GetMapping("/recrutador/historico")
+    public List<ResultMegaSena> getMegaSenaHistory() {
+        return service.getMegaSenaHistory("recrutador");
     }
 }
