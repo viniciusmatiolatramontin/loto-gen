@@ -13,8 +13,12 @@ public class WebSecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
+		http.cors(Customizer.withDefaults())
 			.authorizeHttpRequests((requests) -> requests
+				.requestMatchers("/lotofacil/recrutador/**").permitAll()
+				.requestMatchers("/lotofacil/recrutador/historico").permitAll()
+				.requestMatchers("/megasena/recrutador/**").permitAll()
+				.requestMatchers("/megasena/recrutador/historico").permitAll()
 				.anyRequest().authenticated()
 			)
 			.oauth2Login(Customizer.withDefaults());
