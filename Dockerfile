@@ -1,9 +1,9 @@
 FROM maven:3.9.4-eclipse-temurin-11 AS build
-COPY src /home/loto-api/src
-COPY pom.xml /home/loto-api
-RUN mvn -f /home/loto-api/pom.xml clean package
+COPY src /loto-api/src
+COPY pom.xml /loto-api
+RUN mvn -f /loto-api/pom.xml clean package -D maven.test.skip
 
 FROM openjdk:20
-COPY /target/loto-gen-0.0.1-SNAPSHOT.jar loto-gen-0.0.1-SNAPSHOT.jar
+COPY --from=build /target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","loto-gen-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
