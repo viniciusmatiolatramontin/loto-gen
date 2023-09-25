@@ -19,7 +19,7 @@ public class LotoFacilService {
 
     public ResultLotoFacil generateLotoFacil(Integer qtd, String username) {
         if(qtd > 20 || qtd < 15 || qtd == null){
-            throw new IllegalArgumentException("Quantidade de dezenas deve ser um numero de 15 ate 20");
+            throw new IllegalArgumentException("Quantidade de dezenas deve ser um número de 15 até 20");
         }
 
         List<Integer> results = new ArrayList<Integer>();
