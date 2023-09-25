@@ -1,4 +1,4 @@
-FROM maven:3.9.4-eclipse-temurin-11 AS build
+FROM maven:3.9.4-eclipse-temurin-20 AS build
 COPY /src /app/src
 COPY /pom.xml /app
 RUN mvn -f /app/pom.xml clean package -Dmaven.test.skip
