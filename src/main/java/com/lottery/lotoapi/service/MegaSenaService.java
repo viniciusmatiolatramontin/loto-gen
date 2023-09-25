@@ -19,7 +19,7 @@ public class MegaSenaService {
 
     public ResultMegaSena generateMegaSena(Integer qtd, String username) {
         if(qtd > 15 || qtd < 6 || qtd == null){
-            throw new IllegalArgumentException("Quantidade de dezenas deve ser um numero de 6 ate 15");
+            throw new IllegalArgumentException("Quantidade de dezenas deve ser um número de 6 até 15");
         }
 
         List<Integer> results = new ArrayList<Integer>();
