@@ -1,4 +1,4 @@
-FROM maven:3.9.4-eclipse-temurin-11 AS build
+FROM maven:3.9.4-jdk-20 AS build
 COPY src /loto-api/src
 COPY pom.xml /loto-api
 RUN mvn -f /loto-api/pom.xml clean package -Dmaven.test.skip
