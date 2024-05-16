@@ -24,19 +24,9 @@ public class LotoFacilController {
         return service.generateLotoFacil(qtd, authentication.getName());
     }
 
-    @GetMapping("/recrutador/{qtd}")
-    public ResultLotoFacil generateLotoFacilRecruiter(@PathVariable Integer qtd) {
-        return service.generateLotoFacil(qtd, "recrutador");
-    }
-
     @GetMapping("/historico")
     public List<ResultLotoFacil> getLotoFacilHistory(Authentication authentication) {
         return service.getLotoFacilHistory(authentication.getName());
-    }
-
-    @GetMapping("/recrutador/historico")
-    public List<ResultLotoFacil> getLotoFacilHistoryRecruiter() {
-        return service.getLotoFacilHistory("recrutador");
     }
 
 }
